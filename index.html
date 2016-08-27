@@ -59,26 +59,47 @@
 
 $(document).ready(function(){
 
-  var characters = [
+  var images = [
     "assets/images/contra-bill.png",
     "assets/images/link.png",
     "assets/images/mario.png",
-    "assets/images/megaman.png",
-    "assets/images/samus.png",
-    "assets/images/simon-belmont.png",
-    "assets/images/fighter.png",
-    "assets/images/black-mage.png",
-    "assets/images/ninja-gaiden.png",
-    "assets/images/pit.png",
-    "assets/images/double-dragon.png",
-    "assets/images/bowser.png",
-    "assets/images/donkey-kong.png"
+  //"assets/images/megaman.png",
+  //  "assets/images/samus.png",
+  //  "assets/images/simon-belmont.png",
+  //  "assets/images/fighter.png",
+  //  "assets/images/black-mage.png",
+  //  "assets/images/ninja-gaiden.png",
+  //  "assets/images/pit.png",
+  //  "assets/images/double-dragon.png",
+  //  "assets/images/bowser.png",
+  //  "assets/images/donkey-kong.png"
   ];
 
-  for (var i = 0; i < characters.length; i++) {
+  var bill = {
+    name: "Bill",
+    health: 125,
+    power: 23,
+    src: "assets/images/contra-bill.png"
+  };
+
+  var link = {
+    name: "Link",
+    health: 100,
+    power: 25,
+    src: "assets/images/link.png"
+  };
+
+  var mario = {
+    name: "Mario",
+    health: 110,
+    power: 22,
+    src: "assets/images/mario.png"
+  };
+
+  for (var i = 0; i < images.length; i++) {
 
     var img = $("<img />");
-    img.attr("src", characters[i]);
+    img.attr("src", images[i]);
     img.attr("class", "charImage");
     img.attr("id", "" + i + "");
 
@@ -119,7 +140,10 @@ $(document).ready(function(){
 
   $(".fight").on("click", function () {
 
-    alert("check check");
+  /* var playerHealth =
+  var playerPower =
+  var computerHealth =
+  var computerPower = */
 
   })
 
