@@ -57,51 +57,40 @@
 
 <script>
 
-$(document).ready(function(){
+var bill = {
+  name: "Bill",
+  health: 125,
+  power: 23,
+  src: "assets/images/contra-bill.png"
+};
 
-  var images = [
-    "assets/images/contra-bill.png",
-    "assets/images/link.png",
-    "assets/images/mario.png",
-  //"assets/images/megaman.png",
-  //  "assets/images/samus.png",
-  //  "assets/images/simon-belmont.png",
-  //  "assets/images/fighter.png",
-  //  "assets/images/black-mage.png",
-  //  "assets/images/ninja-gaiden.png",
-  //  "assets/images/pit.png",
-  //  "assets/images/double-dragon.png",
-  //  "assets/images/bowser.png",
-  //  "assets/images/donkey-kong.png"
-  ];
+var link = {
+  name: "Link",
+  health: 100,
+  power: 25,
+  src: "assets/images/link.png"
+};
 
-  var bill = {
-    name: "Bill",
-    health: 125,
-    power: 23,
-    src: "assets/images/contra-bill.png"
-  };
+var mario = {
+  name: "Mario",
+  health: 110,
+  power: 22,
+  src: "assets/images/mario.png"
+};
 
-  var link = {
-    name: "Link",
-    health: 100,
-    power: 25,
-    src: "assets/images/link.png"
-  };
+function charImages() {
 
-  var mario = {
-    name: "Mario",
-    health: 110,
-    power: 22,
-    src: "assets/images/mario.png"
-  };
+  var images = [bill, link, mario];
 
   for (var i = 0; i < images.length; i++) {
 
     var img = $("<img />");
-    img.attr("src", images[i]);
-    img.attr("class", "charImage");
-    img.attr("id", "" + i + "");
+    img.attr("name", images[i].name);
+    img.attr("data-health", images[i].health);
+    img.attr("data-power", images[i].power);
+    img.attr("src", images[i].src);
+    img.attr("class", "character");
+    // img.attr("id",  "" + i + "");
 
     var button = $("<button class='img-thumbnail'></button>");
     button.prepend(img);
@@ -112,6 +101,12 @@ $(document).ready(function(){
     $("#select-character").append(selector);
 
   }
+
+};
+
+$(document).ready(function(){
+
+  charImages();
 
   var charSelected = false;
   var computerSelected = false;
@@ -140,10 +135,41 @@ $(document).ready(function(){
 
   $(".fight").on("click", function () {
 
-  /* var playerHealth =
-  var playerPower =
-  var computerHealth =
-  var computerPower = */
+    var playerHealth = $(".p1-area").find(".character").data("health");
+    var playerPower = $(".p1-area").find(".character").data("power");
+
+    var computerHealth = $(".computer-area").find(".character").data("health");
+    var computerPower = $(".computer-area").find(".character").data("power");
+
+    if (playerHealth > 0 && computerHealth > 0) {
+
+      playerHealth -= computerPower;
+      $(".p1-area").find(".character").data("health", playerHealth);
+
+      computerHealth -= playerPower;
+      $(".computer-area").find(".character").data("health", computerHealth);
+
+      playerPower += 10;
+      $(".p1-area").find(".character").data("power", playerPower);
+
+    }
+    else if (playerHealth > 0 && computerHealth <= 0) {
+
+      alert("You Win!");
+
+    }
+    else if ( playerHealth == 0 && computerHealth == 0) {
+
+      alert("You Tied!");
+
+    }
+    else {
+
+      alert("You Lose!");
+
+    }
+
+    return;
 
   })
 
