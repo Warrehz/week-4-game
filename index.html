@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-xs-4">
-          <img class="img-responsive center-block" src="assets/images/fight.png"/>
+          <img class="fight img-responsive center-block" src="assets/images/fight.png"/>
         </div>
 
         <div class="col-xs-4 computer-area">
@@ -99,14 +99,14 @@ $(document).ready(function(){
 
     if (charSelected == false) {
 
-      $(".p1-area").append(this);
+      $(this).clone().appendTo(".p1-area");
 
       charSelected = true;
 
     }
     else if (charSelected == true && computerSelected == false) {
 
-      $(".computer-area").append(this);
+      $(this).clone().appendTo(".computer-area");
 
       computerSelected = true;
 
@@ -116,6 +116,12 @@ $(document).ready(function(){
     }
 
   });
+
+  $(".fight").on("click", function () {
+
+    alert("check check");
+
+  })
 
 })
 
