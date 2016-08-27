@@ -45,70 +45,79 @@
 
       </div>
 
+      <div class="row">
+
         <h2>Select Your Character</h2>
         <div id="select-character">
         </div>
+
+      </div>
 
     </div>
 
 <script>
 
-var characters = [];
+$(document).ready(function(){
 
-characters[0] = new Image();
-characters[0].src = "assets/images/contra-bill.png";
+  var characters = [
+    "assets/images/contra-bill.png",
+    "assets/images/link.png",
+    "assets/images/mario.png",
+    "assets/images/megaman.png",
+    "assets/images/samus.png",
+    "assets/images/simon-belmont.png",
+    "assets/images/fighter.png",
+    "assets/images/black-mage.png",
+    "assets/images/ninja-gaiden.png",
+    "assets/images/pit.png",
+    "assets/images/double-dragon.png",
+    "assets/images/bowser.png",
+    "assets/images/donkey-kong.png"
+  ];
 
-characters[1] = new Image();
-characters[1].src = "assets/images/link.png";
+  for (var i = 0; i < characters.length; i++) {
 
-characters[2] = new Image();
-characters[2].src = "assets/images/mario.png";
+    var img = $("<img />");
+    img.attr("src", characters[i]);
+    img.attr("class", "charImage");
+    img.attr("id", "" + i + "");
 
-characters[3] = new Image();
-characters[3].src = "assets/images/megaman.png";
+    var button = $("<button class='img-thumbnail'></button>");
+    button.prepend(img);
 
-characters[4] = new Image();
-characters[4].src = "assets/images/samus.png";
+    var selector = $("<div class='charSelect' data-charid='" + i + "'></div>");
+    selector.prepend(button);
 
-characters[5] = new Image();
-characters[5].src = "assets/images/simon-belmont.png";
+    $("#select-character").append(selector);
 
-characters[6] = new Image();
-characters[6].src = "assets/images/fighter.png";
+  }
 
-characters[7] = new Image();
-characters[7].src = "assets/images/black-mage.png";
+  var charSelected = false;
+  var computerSelected = false;
 
-characters[8] = new Image();
-characters[8].src = "assets/images/ninja-gaiden.png";
+  $(".charSelect").on("click", function () {
 
-characters[9] = new Image();
-characters[9].src = "assets/images/pit.png";
+    if (charSelected == false) {
 
-characters[10] = new Image();
-characters[10].src = "assets/images/double-dragon.png";
+      $(".p1-area").append(this);
 
-characters[11] = new Image();
-characters[11].src = "assets/images/bowser.png";
+      charSelected = true;
 
-characters[12] = new Image();
-characters[12].src = "assets/images/donkey-kong.png";
+    }
+    else if (charSelected == true && computerSelected == false) {
 
-for (var i = 0; i < characters.length; i++) {
+      $(".computer-area").append(this);
 
-  var a = $("<button class='charSelect img-thumbnail'></button>");
+      computerSelected = true;
 
-  a.prepend(characters[i]);
+    }
+    else {
+      alert("Characters have been chosen, fight!");
+    }
 
-  $("#select-character").append(a);
-
-}
-
-$(".charSelect").on("click", function () {
-
+  });
 
 })
-
 
 </script>
 </body>

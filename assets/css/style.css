@@ -21,3 +21,7 @@ button.fight {
   height: 500px;
   height: 100%;
 }
+
+.charSelect {
+  display: inline-block;
+}
